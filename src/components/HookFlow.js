@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 
 // 부모 컴포넌트 렌더링 -> 자식 컴포넌트 렌더링
 // 부모 Clean-UP 진행 -> 자식 useEffect 진행 -> 부모 useEffect 진행
@@ -9,9 +9,12 @@ const Child = () => {
     console.log("   Child useState");
     return "";
   });
+  const refText = useRef();
 
   useEffect(() => {
     console.log("   Child useEffect, no deps");
+    // refText.current.focus();
+    
     return () => {
       console.log("   Child useEffect[Clean Up], no deps");
     };
@@ -19,7 +22,7 @@ const Child = () => {
 
   useEffect(() => {
     console.log("   Child useEffect, empty deps");
-    
+    refText.current.focus();
     return () => {
       console.log("   Child useEffect[Clean Up], empty deps");
     };
@@ -39,7 +42,10 @@ const Child = () => {
 
   console.log("   Child render End");
   return(
-    <input onChange={handleChange} />
+    <input 
+      onChange={handleChange}
+      ref={refText} 
+    />
   );
 };
 
