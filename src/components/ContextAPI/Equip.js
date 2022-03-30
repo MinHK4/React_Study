@@ -8,7 +8,7 @@ import axios from 'axios'
 export default function Equip() {
   const [equips, setEquips] = useState([]);
 
-  const fetchUsers = async () => (
+  const fetchEquips = async () => (
     await axios.get(`/equips`)
     .then(res=>{
       console.log(res.data.body)
@@ -17,7 +17,7 @@ export default function Equip() {
   )
   
   useEffect(()=>{
-    fetchUsers();
+    fetchEquips();
   }, []);
 
   return (

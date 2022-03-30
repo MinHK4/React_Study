@@ -1,10 +1,10 @@
 import React from 'react'
 // import HookFlow from './components/HookFlow'
-import Test from './components/ContextAPI/Equip'
+import Equip from './components/ContextAPI/Equip'
 
 export default function App() {
   return (
-    <Test/>
+    <Equip/>
     // <HookFlow/>
   )
 }

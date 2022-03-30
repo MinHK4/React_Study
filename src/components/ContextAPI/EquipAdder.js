@@ -46,7 +46,7 @@ export default function EquipAdder() {
   return (
     <div>
       <input 
-        type="text" 
+        type="text"
         name="name" 
         placeholder="장비명을 입력하시오"
         onChange={updateName}
