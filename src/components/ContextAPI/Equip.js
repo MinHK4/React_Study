@@ -1,7 +1,9 @@
 import React, { useEffect, useState} from 'react'
 import axios from 'axios'
+import EquipAdder from './EquipAdder';
+import EquipHeader from './EquipHeader';
 
-export default function Test() {
+export default function Equip() {
   const [equips, setEquips] = useState([]);
 
   const fetchUsers = async () => (
@@ -18,9 +20,11 @@ export default function Test() {
   
   return (
     <React.Fragment>
-      <div>API Test</div>
+      <EquipHeader/>
+      <EquipAdder/>
+      <br></br>
       {equips.map((equip)=>(
-        <li key={equip.eqid}>{equip.name}</li>
+        <li key={equip.eqid}>{equip.name} {equip.cnt}</li>
       ))}
     </React.Fragment>
   )
