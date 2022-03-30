@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { EquipContext } from './EquipContext';
 import axios from 'axios'
 
 export default function EquipAdder() {
   const [name, setName] = useState("");
   const [count, setCount] = useState(0);
+  const [equips, setEquips] = useContext(EquipContext);
 
   const updateName = (e) => {
     setName(e.target.value);
@@ -13,14 +15,18 @@ export default function EquipAdder() {
   }
 
   const handleSubmit = async () => {
+    
+    const newItem = {
+      name: name,
+      cnt: count,
+      eqid: Date.now()
+    }
+    
+    // DB에 업데이트
     await axios({
       url: '/equips',
       method: 'post',
-      data: {
-        name: name,
-        cnt: count,
-        eqid: Date.now()
-      }
+      data: newItem
     })
     .then(function a(response) { 
       console.log(response) 
@@ -28,6 +34,9 @@ export default function EquipAdder() {
     .catch(function (error) {
       console.log(error);
     });
+
+    //state 업데이트
+    setEquips(prev => [...prev, newItem])
   }
 
   return (

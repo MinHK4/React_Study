@@ -1,8 +1,9 @@
-import React, { useEffect, useState} from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react'
 import EquipAdder from './EquipAdder';
 import EquipHeader from './EquipHeader';
 import EquipItems from './EquipItems';
+import { EquipProvider } from './EquipContext';
+import axios from 'axios'
 
 export default function Equip() {
   const [equips, setEquips] = useState([]);
@@ -17,14 +18,14 @@ export default function Equip() {
   
   useEffect(()=>{
     fetchUsers();
-  }, [])
-  
+  }, []);
+
   return (
-    <React.Fragment>
+    <EquipProvider value={[equips, setEquips]}>
       <EquipHeader/>
       <EquipAdder/>
       <br></br>
       <EquipItems items={equips}/>
-    </React.Fragment>
+    </EquipProvider>
   )
 }
