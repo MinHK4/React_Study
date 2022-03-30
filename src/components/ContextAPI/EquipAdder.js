@@ -21,7 +21,7 @@ export default function EquipAdder() {
       cnt: count,
       eqid: Date.now()
     }
-    
+
     // DB에 업데이트
     await axios({
       url: '/equips',
@@ -37,6 +37,10 @@ export default function EquipAdder() {
 
     //state 업데이트
     setEquips(prev => [...prev, newItem])
+
+    // input 초기화
+    setName("");
+    setCount(0);
   }
 
   return (

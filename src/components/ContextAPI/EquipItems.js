@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { EquipContext } from './EquipContext';
 import axios from 'axios'
 
 export default function EquipItems({items}) {
+  const [equips, setEquips] = useContext(EquipContext);
 
   const handleDelete = async (item) => {
+    
+    // DB 업데이트
     await axios({
       url: "/equips/" + item.eqid,
       method: 'delete',
@@ -14,6 +18,9 @@ export default function EquipItems({items}) {
     .catch(function (error) {
       console.log(error);
     });
+
+    //state 업데이트
+    setEquips(equips.filter(equip => equip.eqid !== item.eqid))
   }
 
   return(
