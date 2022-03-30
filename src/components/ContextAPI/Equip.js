@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react'
 import axios from 'axios'
 import EquipAdder from './EquipAdder';
 import EquipHeader from './EquipHeader';
-import EquipItem from './EquipItem';
+import EquipItems from './EquipItems';
 
 export default function Equip() {
   const [equips, setEquips] = useState([]);
@@ -24,9 +24,7 @@ export default function Equip() {
       <EquipHeader/>
       <EquipAdder/>
       <br></br>
-      {equips.map((equip)=>(
-        <EquipItem item={equip} key={equip.eqid}/>
-      ))}
+      <EquipItems items={equips}/>
     </React.Fragment>
   )
 }
