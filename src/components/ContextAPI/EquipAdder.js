@@ -31,7 +31,7 @@ export default function EquipAdder() {
   }
 
   return (
-    <form>
+    <div>
       <input 
         type="text" 
         name="name" 
@@ -48,6 +48,6 @@ export default function EquipAdder() {
         value={count}
       />
       <input onClick={handleSubmit} type="submit" value="대출"/>
-    </form>
+    </div>
   )
 }
